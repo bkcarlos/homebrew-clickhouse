@@ -14,7 +14,7 @@ class Clickhouse < Formula
   depends_on "readline" => :build
 
   def install
-    inreplace "dbms/programs/server/config.xml" do |s|
+    inreplace "programs/server/config.xml" do |s|
       s.gsub! "/var/lib/", "#{var}/lib/"
       s.gsub! "/var/log/", "#{var}/log/"
       s.gsub! "<!-- <max_open_files>262144</max_open_files> -->", "<max_open_files>262144</max_open_files>"
@@ -30,7 +30,7 @@ class Clickhouse < Formula
       system "ninja"
     end
 
-    bin.install "#{buildpath}/build/dbms/programs/clickhouse"
+    bin.install "#{buildpath}/build/programs/clickhouse"
     bin.install_symlink "clickhouse" => "clickhouse-benchmark"
     bin.install_symlink "clickhouse" => "clickhouse-clang"
     bin.install_symlink "clickhouse" => "clickhouse-client"
@@ -47,11 +47,11 @@ class Clickhouse < Formula
 
 
     mkdir "#{etc}/clickhouse-client/"
-    (etc/"clickhouse-client").install "#{buildpath}/dbms/programs/client/clickhouse-client.xml"
+    (etc/"clickhouse-client").install "#{buildpath}/programs/client/clickhouse-client.xml"
 
     mkdir "#{etc}/clickhouse-server/"
-    (etc/"clickhouse-server").install "#{buildpath}/dbms/programs/server/config.xml"
-    (etc/"clickhouse-server").install "#{buildpath}/dbms/programs/server/users.xml"
+    (etc/"clickhouse-server").install "#{buildpath}/programs/server/config.xml"
+    (etc/"clickhouse-server").install "#{buildpath}/programs/server/users.xml"
   end
 
   def plist; <<~EOS
