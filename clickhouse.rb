@@ -1,8 +1,8 @@
 class Clickhouse < Formula
   desc "Clickhouse formula"
   homepage "https://clickhouse.tech"
-  url "https://github.com/ClickHouse/ClickHouse.git", :tag => "v21.3.16.5-lts"
-  version "21.3.16.5"
+  url "https://github.com/ClickHouse/ClickHouse.git", :tag => "v21.8.12.29-lts"
+  version "21.8.12.29"
   head "https://github.com/ClickHouse/ClickHouse.git"
 
   depends_on "gcc@8"
